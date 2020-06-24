@@ -1,0 +1,66 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- user_wants_to_enroll
+- user_choose_program
+- user_choose_course
+- user_wants_college_info
+responses:
+  utter_greet:
+  - buttons:
+    - payload: I would like to Enroll
+      title: Enroll
+    - payload: What's so interesting about this College?
+      title: College Info
+    text: Hey! How can I help you?
+  utter_display_programs:
+  - buttons:
+    - payload: Pick UG for me
+      title: UG
+    - payload: Pick PG for me
+      title: PG
+    - payload: home section
+      title: Return to Home
+    text: Please select/type the Program name
+  utter_display_college_info:
+  - image: https://eduprov.com/wp-content/uploads/2020/01/maxresdefault.jpg
+    text: New Horizon College of Engineering is an Autonomous private Engineering
+      college affiliated to VTU and ranked No. 3 in Bangalore and "A" grade by NAAC.
+      It is located near Marathalli, outer Ring Road within the heart of big companies.\n\n\
+      \Chairman of NHCE is Dr. Mohan Maghnani.\n\n\ \NHCE always focuses on the quality
+      education with the industry exposure and has a highest placement rate.\n\n\
+      \Please note that NHCE is an Autonomous Engineering College which has wide variety
+      of BENEFITS.\n\n\ \> Academic Freedom\n\n> Choice-Based Credit System (CBCS)\n\n>
+      Better Subject Choice and Electives\n\n\ \> Make-up & Fastrack Examination and
+      many more...\n\n\ \Do you know what.... This is the most asked question by most
+      of the visitors here. haha
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_display_course
+- action_display_course_info
+- utter_greet
+- utter_display_programs
+- utter_display_college_info
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
