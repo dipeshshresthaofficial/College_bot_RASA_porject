@@ -93,3 +93,21 @@
 - 5
 - 6
 - 7
+
+## intent:user_choose_home
+- go back to Home
+- I want to go Home
+- take me to begining section
+
+
+## intent:user_choose_save_seat
+- save seat
+- i want to save seat for this course
+- confirm seat
+
+## intent:user_gave_email
+- abc@gmail.com
+- askdjfjsdlk@gmail.com
+- asklfdjjeiwom@outlook.com
+- wlqmqj@hotmail.com
+- iowewio@yahoo.com
