@@ -312,3 +312,55 @@ class ActionDisplayFacilityInfo(Action):
 
         conn.close()
         return []
+
+
+class ActionDisplayStudentResult(Action):
+
+    def name(self) -> Text:
+        return "action_display_student_result"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        print("Inside actions")
+        try:
+            conn = sqlite3.connect('college2.db')
+
+        except:
+            content_text = "I can't connect with database, please wait for a second."
+
+        user_message = str((tracker.latest_message)['text'])
+
+        # getting USN slot value
+        user_USN = tracker.get_slot("USN").upper()
+        print(user_USN)
+
+        exe_str = "Select student_name,sem,sec,course,cgpa,usn from students"
+
+        try:
+
+            content = conn.execute(exe_str)
+            print('helllo check')
+            content_text = ''
+            content_text += "Your Result details is mentioned below:\n\n"
+            for index, value in enumerate(content):
+                print("hello")
+                if(str(value[5]))==user_USN:
+                    print("hello part 2")
+                    content_text += str(index + 1) + ") Name: " + str(value[0]) + "\n" \
+                    +str(index + 2) + ") USN: "+user_USN+ "\n" \
+                    +str(index + 3) + ") Sem: " + str(value[1])+" "+ str(value[2])+"\n" \
+                    +str(index + 4) + ") Course: "+ str(value[3])+"\n\n" \
+                    +str(index + 5) + ") CGPA: "+ str(value[4])
+                else:
+                    content_text = "Your USN doesn't match with the Database, Please verify."
+
+
+            dispatcher.utter_message(text=content_text)
+
+        except:
+            content_text = "Sorry system run into trouble.. Can you please check again?"
+            dispatcher.utter_message(text=content_text)
+
+        return []

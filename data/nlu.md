@@ -133,3 +133,47 @@
 - 3
 - 4
 - 5
+
+## intent:user_gave_USN
+- [1NH17CS039](USN)
+- My usn is [1NH17CS039](USN)
+- [1nh17cs039](USN)
+- My usn is [1NH17CS039](USN)
+
+
+## intent:user_choose_result
+- Show me the result
+- show me my Result
+- Result
+- result
+- can you show me my result
+
+## intent:user_choose_no
+- no
+- No
+- NO
+- nO
+- no i am not the NHCE student
+- no i am not
+- not
+- i am not NHCE student
+
+## intent:user_choose_yes
+- yes
+- Yes
+- YES
+- yeS
+- yes i am the NHCE student
+- yes i am
+- i am NHCE student
+
+
+## intent:user_choose_payment
+- I want to make payment
+- payment
+- fee payment
+- fine payment
+- farewell payment
+- can you make a payment for me
+- i would like to make a payment
+- pay

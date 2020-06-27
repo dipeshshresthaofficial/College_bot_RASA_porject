@@ -49,3 +49,36 @@
   - utter_goto_home
 * user_choose_home
   - utter_greet
+
+
+## Display Result for NHCE students
+* greet
+  - utter_greet
+* user_choose_result
+  - utter_ask_if_new_student
+* user_choose_no
+  - utter_ask_USN
+* user_gave_USN
+  - action_display_student_result
+  - utter_goto_home
+* user_choose_home
+  - utter_greet
+
+## Result for New students
+* greet
+  - utter_greet
+* user_choose_result
+  - utter_ask_if_new_student
+* user_choose_yes
+  - utter_display_eresult_link
+  - utter_goto_home
+* user_choose_home
+  - utter_greet
+
+
+## Payment feature
+
+* greet
+  = utter_greet
+* user_choose_payment
+  - utter_display_payment_types
