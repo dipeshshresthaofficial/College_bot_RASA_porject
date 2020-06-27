@@ -11,6 +11,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.forms import FormAction
 import sqlite3
 import smtplib
 import numpy as np
@@ -102,22 +103,21 @@ class ActionDisplayCourseInfo(Action):
                 if(index+1)==user_input:
                     content_text += str(value[0]) + "\n\n"+"Total Duration: "+str(value[1])+"\n\n"+"Total Fee: "+str(value[2])+"\n\n"+"You can find the syllabus here: "+str(value[3])
 
-            content_text+="\n1) Enroll"+"\n2) Exit"
-            content_text += "\nEnter item number (eg : 1 or 2 ...)"
+            content_text+="\nType 'SAVE SEAT' to save seat for yourself in this course"+"\nType 'BYE' to exit "
             dispatcher.utter_message(text=content_text)
         except:
-            ontent_text = "Sorry system run into trouble.. Can you please check again?"
+            content_text = "Sorry system run into trouble.. Can you please check again?"
             dispatcher.utter_message(text=content_text)
 
         conn.close()
         return []
 
 
-class ActionStudentEnrolledInToCourse(Action):
+class ActionEmailAdmissionDepart(Action):
 
     def name(self) -> Text:
 
-        return "action_student_enrolled_into_course"
+        return "action_email_admission_depart"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -131,6 +131,7 @@ class ActionStudentEnrolledInToCourse(Action):
                 messages.append(event.get("text"))
 
         user_message = messages[-2]
+        user_email = messages[-1]
         print("All messages till now : \n",messages)
         print("user_message : ",user_message)
 
@@ -139,8 +140,8 @@ class ActionStudentEnrolledInToCourse(Action):
 
         fromaddr = '1nh17cs039.dipesh@gmail.com'
         toaddrs = '1nh17cs039.dipesh@gmail.com'
-        msg = "Admission Alert! " +",\n\nA student with following Email and contact number has show interest in the course with Admit No: " \
-              + str(admit_no) + "\n\n" +user_message+ "\nThanks,\nPlease contact him/ her as soon as possible!"
+        msg = "Admission Alert! " +",\n\nA student with following NAME and EMAIL number has show interest in one of the course: " \
+              "\n\n Admit No: "+ str(admit_no) + "\nName: " +user_message.upper()+"\nEmail: "+user_email+ "\n\nThanks,\nPlease contact him/ her as soon as possible!"
         username = '1nh17cs039.dipesh@gmail.com'
         obj = open('pass.txt')
         password = obj.read()
@@ -153,4 +154,68 @@ class ActionStudentEnrolledInToCourse(Action):
         content = "Thanks the concerned department will be notified, you will receive a call/ email soon."
         dispatcher.utter_message(text=content)
 
+        return []
+
+class ActionEmailAdmittedStudent(Action):
+
+    def name(self) -> Text:
+
+        return "action_email_admitted_student"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        print("admission department informed")
+
+        messages = []
+        for event in (list(tracker.events))[:1000]:
+            if event.get("event") == "user":
+                messages.append(event.get("text"))
+
+        user_name = messages[-2]
+        user_email = messages[-1]
+        print("All messages till now : \n",messages)
+        print("user_message : ",user_name)
+
+        admit_no = np.random.randint(1,10000,1)[0]
+
+
+        fromaddr = '1nh17cs039.dipesh@gmail.com'
+        toaddrs = user_email
+        msg = "Admission Alert! " +",\n\n Thank You "+user_name.upper()+" for showing interest into our course please note the following important information: " \
+              "\n\nAdmit No: "+ str(admit_no) + "\nName: " +user_name.upper()+"\nEmail: "+user_email+ "\n\nThanks,\nYou will be contacted soon by our Admission Department\n\n Regards!"
+        username = '1nh17cs039.dipesh@gmail.com'
+        obj = open('pass.txt')
+        password = obj.read()
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.ehlo()
+        server.starttls()
+        server.login(username, password)
+        server.sendmail(fromaddr, toaddrs, msg)
+        server.quit()
+
+        return []
+
+
+class ActionFormInfo(FormAction):
+    def name(self) -> Text:
+        """Unique identifier of the form"""
+        return "form_info"
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        """A list of required slots that the form has to fill"""
+
+        print("required_slots(tracker: Tracker)")
+        return ["NAME", "EMAIL"]
+    def submit(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict]:
+        """Define what the form has to do
+            after all required slots are filled"""
+        # utter submit template
+        dispatcher.utter_message(template="utter_submit")
         return []

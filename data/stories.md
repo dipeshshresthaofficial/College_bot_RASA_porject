@@ -9,8 +9,11 @@
   - action_display_course_info
 * user_choose_save_seat
   - utter_save_seat
-* user_gave_email
-  - action_student_enrolled_into_course
+  - form_info
+  - form{"name": "form_info"}
+  - form{"name": null}
+  - action_email_admission_depart
+  - action_email_admitted_student
   - utter_goto_home
 * user_choose_home
   - utter_greet
@@ -28,3 +31,9 @@
 ## goodbye
 * goodbye
   - utter_goodbye
+
+## form Testing path
+* network_issue
+  - form_info
+  - form{"name": "form_info"}
+  - form{"name": null}

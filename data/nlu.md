@@ -105,9 +105,19 @@
 - i want to save seat for this course
 - confirm seat
 
-## intent:user_gave_email
-- abc@gmail.com
-- askdjfjsdlk@gmail.com
-- asklfdjjeiwom@outlook.com
-- wlqmqj@hotmail.com
-- iowewio@yahoo.com
+## intent:user_gave_NAME
+- My name is [Dipesh](NAME)
+- [Binod](NAME)
+- name = [Bibek](NAME)
+- [Dipesh](NAME) is my name
+
+## intent:user_gave_EMAIL
+- My email is [abc@gmail.com](EMAIL)
+- [askdjfjsdlk@gmail.com](EMAIL)
+- email is [asklfdjjeiwom@outlook.com](EMAIL)
+- email = [wlqmqj@hotmail.com](EMAIL)
+
+
+## intent:network_issue
+- I have a network issue
+- please help

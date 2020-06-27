@@ -15,7 +15,28 @@ intents:
 - user_wants_college_info
 - user_choose_home
 - user_choose_save_seat
-- user_gave_email
+- user_gave_NAME
+- user_gave_EMAIL
+- network_issue
+
+
+
+entities:
+- NAME
+- EMAIL
+
+slots:
+  NAME:
+    type: unfeaturized
+  subject:
+    type: unfeaturized
+  EMAIL:
+    type: unfeaturized
+
+forms:
+- form_info
+
+
 responses:
   utter_greet:
   - buttons:
@@ -34,13 +55,24 @@ responses:
       title: Return to Home
     text: Please select/type the Program name
 
+
+
+  utter_ask_NAME:
+  - text: Ok. Please provide your first name?
+  utter_ask_EMAIL:
+  - text: Please share your Correct, Full Email address or else you won't get Email?
+  utter_submit:
+  - text: "Your description is\n
+          - Name: {NAME}\n
+          - Email: {EMAIL}\n"
+
   utter_display_college_info:
   - image: 'https://eduprov.com/wp-content/uploads/2020/01/maxresdefault.jpg'
-    text: 'New Horizon College of Engineering is an Autonomous private Engineering
-      college affiliated to VTU and ranked No. 3 in Bangalore and "A" grade by NAAC.
-      It is located near Marathalli, outer Ring Road within the heart of big companies.
-      NHCE always focuses on the quality education with the industry exposure and has a highest placement rate.
-      Chairman of NHCE is Dr. Mohan Maghnani.'
+    text: "New Horizon College of Engineering is an Autonomous private Engineering college
+            affiliated to VTU and ranked No. 3 in Bangalore and 'A' grade by NAAC. \n
+            It is located near Marathalli, outer Ring Road within the heart of big companies.\n
+            NHCE always focuses on the quality education with the industry exposure and has a highest placement rate.\n
+            Chairman of NHCE is Dr. Mohan Maghnani."
 
   utter_goto_home:
   - buttons:
@@ -74,4 +106,5 @@ actions:
 - utter_happy
 - utter_goodbye
 - utter_iamabot
-- action_student_enrolled_into_course
+- action_email_admission_depart
+- action_email_admitted_student
