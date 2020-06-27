@@ -17,7 +17,8 @@ intents:
 - user_choose_save_seat
 - user_gave_NAME
 - user_gave_EMAIL
-- network_issue
+- user_choose_campuslife
+- user_choose_any_facility
 
 
 
@@ -43,7 +44,9 @@ responses:
     - payload: I would like to Enroll
       title: Enroll
     - payload: What's so interesting about this College?
-      title: College Info
+      title: Detail Information
+    - payload: what facilities does NHCE provide?
+      title: College Life
     text: Hey! How can I help you?
   utter_display_programs:
   - buttons:
@@ -108,3 +111,5 @@ actions:
 - utter_iamabot
 - action_email_admission_depart
 - action_email_admitted_student
+- action_display_facilities
+- action_display_facility_info

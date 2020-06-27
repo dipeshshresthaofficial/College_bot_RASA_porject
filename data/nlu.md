@@ -117,7 +117,19 @@
 - email is [asklfdjjeiwom@outlook.com](EMAIL)
 - email = [wlqmqj@hotmail.com](EMAIL)
 
+## intent:user_choose_campuslife
+- show me college facilities
+- Can you tell me something about college facilities
+- what facilities does NHCE provide?
+- what are the facility
+- explain all the facilities
+- Tell me about the facility provided
+- what are the facility
+- facilities
 
-## intent:network_issue
-- I have a network issue
-- please help
+## intent:user_choose_any_facility
+- 1
+- 2
+- 3
+- 4
+- 5

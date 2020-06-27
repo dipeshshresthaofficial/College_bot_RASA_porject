@@ -32,8 +32,20 @@
 * goodbye
   - utter_goodbye
 
-## form Testing path
+<!-- ## form Testing path
 * network_issue
   - form_info
   - form{"name": "form_info"}
-  - form{"name": null}
+  - form{"name": null} -->
+
+
+## College Facilites
+* greet
+  - utter_greet
+* user_choose_campuslife
+  - action_display_facilities
+* user_choose_any_facility
+  - action_display_facility_info
+  - utter_goto_home
+* user_choose_home
+  - utter_greet
