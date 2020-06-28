@@ -18,12 +18,14 @@ intents:
 - user_gave_NAME
 - user_gave_EMAIL
 - user_choose_campuslife
-- user_choose_any_facility
 - user_choose_result
 - user_gave_USN
 - user_choose_no
 - user_choose_yes
 - user_choose_payment
+- user_choose_PAYMENT_TYPE
+- user_entered_AMOUNT
+- user_choose_restart
 
 
 
@@ -31,6 +33,8 @@ entities:
 - NAME
 - EMAIL
 - USN
+- PAYMENT_TYPE
+- AMOUNT
 
 slots:
   NAME:
@@ -40,6 +44,10 @@ slots:
   EMAIL:
     type: unfeaturized
   USN:
+    type: unfeaturized
+  PAYMENT_TYPE:
+    type: unfeaturized
+  AMOUNT:
     type: unfeaturized
 
 forms:
@@ -53,8 +61,7 @@ responses:
       title: Enroll
     - payload: What's so interesting about this College?
       title: Detail Information
-    - payload: what facilities does NHCE provide?
-      title: College Life
+
     - payload: Show me the result
       title: Result
     - payload: I want to make payment
@@ -113,7 +120,7 @@ responses:
   utter_display_eresult_link:
     - text: "If you attended the Entrance exam then you can check your eresult here: \n http://eresults.newhorizonindia.edu/"
 
-  utter_display_payment_types:
+  utter_ask_PAYMENT_TYPE:
   - buttons:
     - payload: fee
       title: Fee
@@ -122,6 +129,15 @@ responses:
     - payload: farewell
       title: Farewell
     text: Which payment would you like to make?
+
+  utter_ask_AMOUNT:
+  - text: Enter the amount you want to pay?
+
+  utter_campus_life:
+  - buttons:
+    - payload: what facilities does NHCE provide?
+      title: College Life
+    text: Do you want to see our facilities?
 
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
@@ -148,5 +164,5 @@ actions:
 - action_email_admission_depart
 - action_email_admitted_student
 - action_display_facilities
-- action_display_facility_info
 - action_display_student_result
+- action_email_payment_receipt
