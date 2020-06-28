@@ -167,7 +167,7 @@
 - yes i am
 - i am NHCE student
 
-
+<!--
 ## intent:user_choose_payment
 - I want to make payment
 - payment
@@ -176,8 +176,8 @@
 - farewell payment
 - can you make a payment for me
 - i would like to make a payment
-- pay
-
+- pay -->
+<!--
 ## intent:user_choose_PAYMENT_TYPE
 - [fee](PAYMENT_TYPE)
 - [fine](PAYMENT_TYPE)
@@ -190,8 +190,8 @@
 - i want to pay [farewell](PAYMENT_TYPE)
 - i want to make payment for [fee](PAYMENT_TYPE)
 - i want to make payment for [fine](PAYMENT_TYPE)
-- i want to make payment for [farewell](PAYMENT_TYPE)
-
+- i want to make payment for [farewell](PAYMENT_TYPE) -->
+<!--
 ## intent:user_entered_AMOUNT
 - [50](AMOUNT)
 - [100](AMOUNT)
@@ -204,8 +204,8 @@
 - [10000](AMOUNT)
 - [20000](AMOUNT)
 - [3000000](AMOUNT)
-- [9322980](AMOUNT)
-
+- [9322980](AMOUNT) -->
+<!-- 
 ## intent:user_choose_restart
 - /restart
-- please /restart
+- please /restart -->

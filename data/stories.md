@@ -69,7 +69,7 @@
   - utter_greet
 
 
-## Payment feature
+<!-- ## Payment feature
 * greet
   - utter_greet
 * user_choose_payment
@@ -86,7 +86,7 @@
   - action_email_payment_receipt
   - utter_goto_home
 * user_choose_home
-  - utter_greet
+  - utter_greet -->
 
 <!--
 ## College Facilites
