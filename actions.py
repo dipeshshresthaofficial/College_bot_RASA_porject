@@ -103,7 +103,7 @@ class ActionDisplayCourseInfo(Action):
                 if(index+1)==user_input:
                     content_text += str(value[0]) + "\n\n"+"Total Duration: "+str(value[1])+"\n\n"+"Total Fee: "+str(value[2])+"\n\n"+"You can find the syllabus here: "+str(value[3])
 
-            content_text+="\nType 'SAVE SEAT' to save seat for yourself in this course"+"\nType 'BYE' to exit "
+            content_text+="\n\nType 'SAVE SEAT' to save seat for yourself in this course"+"\n\nType 'BYE' to exit "
             dispatcher.utter_message(text=content_text)
         except:
             content_text = "Sorry system run into trouble.. Can you please check again?"
@@ -114,6 +114,7 @@ class ActionDisplayCourseInfo(Action):
 
 
 class ActionEmailAdmissionDepart(Action):
+    global admit_no
 
     def name(self) -> Text:
 
@@ -178,13 +179,10 @@ class ActionEmailAdmittedStudent(Action):
         print("All messages till now : \n",messages)
         print("user_message : ",user_name)
 
-        admit_no = np.random.randint(1,10000,1)[0]
-
-
         fromaddr = '1nh17cs039.dipesh@gmail.com'
         toaddrs = user_email
         msg = "Admission Alert! " +",\n\n Thank You "+user_name.upper()+" for showing interest into our course please note the following important information: " \
-              "\n\nAdmit No: "+ str(admit_no) + "\nName: " +user_name.upper()+"\nEmail: "+user_email+ "\n\nThanks,\nYou will be contacted soon by our Admission Department\n\n Regards!"
+               +"\n\nName: " +user_name.upper()+"\nEmail: "+user_email+ "\n\nThanks,\nYou will be contacted soon by our Admission Department\n\n Regards!"
         username = '1nh17cs039.dipesh@gmail.com'
         obj = open('pass.txt')
         password = obj.read()
