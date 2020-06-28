@@ -79,6 +79,6 @@
 ## Payment feature
 
 * greet
-  = utter_greet
+  - utter_greet
 * user_choose_payment
   - utter_display_payment_types
